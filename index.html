@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Royal Wedding Invitation</title>
     
-    <!-- Premium Shriftlar -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <!-- Premium Shriftlar (Kirill qo'llab-quvvatlaydigan Great Vibes qo'shildi) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
@@ -30,19 +30,22 @@
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 9999; transition: all 1.5s cubic-bezier(0.77, 0, 0.175, 1);
         }
-        .envelope-wrapper { text-align: center; }
+        .envelope-wrapper { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; 
+        }
         .royal-seal {
             width: 130px; height: 130px; border-radius: 50%;
             background: var(--gold-gradient); padding: 3px;
             box-shadow: 0 10px 30px rgba(187, 148, 62, 0.4);
             cursor: pointer; transition: 0.5s; animation: float 3s ease-in-out infinite;
+            display: flex; justify-content: center; align-items: center;
         }
         .royal-seal-inner {
             width: 100%; height: 100%; border-radius: 50%;
             background: #0B192C; display: flex; justify-content: center; align-items: center;
         }
         .royal-seal-inner span {
-            font-family: 'Pinyon Script', cursive; font-size: 3.5rem;
+            font-family: 'Great Vibes', cursive; font-size: 3.2rem;
             background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
@@ -82,7 +85,7 @@
             border: 1px solid rgba(191, 149, 63, 0.4); border-radius: 28px; pointer-events: none;
         }
 
-        .monogram { font-family: 'Pinyon Script', cursive; font-size: 4.5rem; color: #AA771C; margin: 0; line-height: 1; }
+        .monogram { font-family: 'Great Vibes', cursive; font-size: 4rem; color: #AA771C; margin: 0; line-height: 1; }
         .section-tag { font-family: 'Cinzel', serif; letter-spacing: 4px; font-size: 0.75rem; color: #555; font-weight: 600; margin-top: 15px; }
         .names { font-family: 'Cinzel', serif; font-size: 2.6rem; font-weight: 400; color: var(--royal-navy); margin: 20px 0; letter-spacing: 1px; }
         .invitation-text { font-size: 0.95rem; line-height: 1.9; color: #444; font-weight: 300; padding: 0 10px; }
@@ -150,10 +153,10 @@
         <div class="envelope-wrapper" onclick="openInvitation()">
             <div class="royal-seal">
                 <div class="royal-seal-inner">
-                    <span>L & M</span>
+                    <span id="seal-logo">L & M</span>
                 </div>
             </div>
-            <p id="tap-text" style="color: var(--gold-light); font-size: 10px; margin-top:25px; letter-spacing: 4px; font-family: 'Cinzel', serif;">OCHISH UCHUN BOSING</p>
+            <p id="tap-text" style="color: var(--gold-light); font-size: 11px; margin-top:25px; letter-spacing: 4px; font-family: 'Cinzel', serif;">OCHISH</p>
         </div>
     </div>
 
@@ -162,10 +165,10 @@
         <div style="padding: 80px 15px 100px 15px;">
             <div class="main-card" data-aos="fade-up">
                 
-                <p class="monogram">L & M</p>
+                <p class="monogram" id="card-mono">L & M</p>
                 <p id="sub-text" class="section-tag">TAKLIFNOMА</p>
                 
-                <h1 class="names">Layli & Majnun</h1>
+                <h1 class="names" id="main-names">Layli & Majnun</h1>
                 
                 <p id="inv-main-text" class="invitation-text">
                     "Hayotimizning unutilmas va eng baxtli kunida siz aziz sohibqironlarimizni quvonchimizga sherik bo‘lishga, oq fotiha berishingizga chin qalbimizdan taklif etamiz."
@@ -195,7 +198,7 @@
                     <div style="font-size: 0.75rem; letter-spacing: 3px; font-family: 'Cinzel', serif; color: var(--gold-light);" id="gift-card-t">TO'YONA UCHUN KARTA</div>
                     <div class="card-num">9860 0000 0000 0000</div>
                     <button class="copy-btn" id="copy-btn" onclick="copyCard()">NUSXA OLISH</button>
-                    <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">Yo'ldoshev Azamat (Humo)</div>
+                    <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;" id="card-owner">Yo'ldoshev Azamat (Humo)</div>
                 </div>
 
                 <!-- Taymer -->
@@ -224,7 +227,7 @@
                     </div>
                 </div>
 
-                <p id="footer-t" style="font-family: 'Pinyon Script', cursive; font-size: 3.5rem; color: #AA771C; margin-top: 50px; margin-bottom: 0;">Sizni kutib qolamiz!</p>
+                <p id="footer-t" style="font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: #AA771C; margin-top: 50px; margin-bottom: 0;">Sizni kutib qolamiz!</p>
 
             </div>
         </div>
@@ -236,16 +239,16 @@
     <script>
         const translations = {
             uz: {
-                save: "KALENDARGA QO'SHISH", tap: "OCHISH UCHUN BOSING", sub: "TAKLIFNOMA", day: "YAKSHANBA",
+                save: "KALENDARGA QO'SHISH", tap: "OCHISH", sub: "TAKLIFNOMA", day: "YAKSHANBA", names: "Layli & Majnun", time: "SOAT 18:00 DA", owner: "Yo'ldoshev Azamat (Humo)", logo: "L & M",
                 inv: '"Hayotimizning unutilmas va eng baxtli kunida siz aziz sohibqironlarimizni quvonchimizga sherik bo‘lishga, oq fotiha berishingizga chin qalbimizdan taklif etamiz."',
                 restoran: '"IDEAL SS" RESTORANI', rsvp: "TASHRIFNI TASDIQLASH", toyona_ph: "To'yona miqdori (ixtiyoriy)",
                 ph: "Ismingiz", yes: "Boraman", no: "Borolmayman", send: "YUBORISH", footer: "Sizni kutib qolamiz!",
                 gift_title: "TO'YONA UCHUN KARTA", copy: "NUSXA OLISH", rest_t: "TANTANA MANZILI", d: "Kun", h: "Soat", m: "Min"
             },
             cyrillic: {
-                save: "КАЛЕНДАРГА ҚЎШИШ", tap: "ОЧИШ УЧУН БОСИНГ", sub: "ТАКЛИФНОМА", day: "ЯКШАНБА",
+                save: "КАЛЕНДАРГА ҚЎШИШ", tap: "ОЧИШ", sub: "ТАКЛИФНОМА", day: "ЯКШАНБА", names: "Лайли & Мажнун", time: "СОАТ 18:00 ДA", owner: "Йўлдошев Азамат (Ҳумо)", logo: "Л & М",
                 inv: '"Ҳаётимизнинг унутилмас ва энг бахтли кунида сиз азиз соҳибқиронларимизни қувончимизга шерик бўлишга, оқ фотиҳа беришингизга чин қалбимиздан таклиф этамиз."',
-                restoran: '"IDEAL SS" РЕСТОРАНИ', rsvp: "ТАШРИФНИ ТАСДИҚЛАШ", toyona_ph: "Тўёна миқдори (ихтиёрий)",
+                restoran: '"IDEAL SS" РЕСТОРАНИ', rsvp: "ТАСДИФНИ ТАСДИҚЛАШ", toyona_ph: "Тўёна миқдори (ихтиёрий)",
                 ph: "Исмингиз", yes: "Бораман", no: "Боролмайман", send: "ЮБОРИШ", footer: "Сизни кутиб қоламиз!",
                 gift_title: "ТЎЁНА УЧУН КАРТА", copy: "НУСХА ОЛИШ", rest_t: "ТАНТАНА МАНЗИЛИ", d: "Кун", h: "Соат", m: "Мин"
             }
@@ -264,6 +267,11 @@
             document.getElementById('tap-text').innerText = t.tap;
             document.getElementById('sub-text').innerText = t.sub;
             document.getElementById('day-name').innerText = t.day;
+            document.getElementById('main-names').innerText = t.names;
+            document.getElementById('time-text').innerText = t.time;
+            document.getElementById('card-owner').innerText = t.owner;
+            document.getElementById('seal-logo').innerText = t.logo;
+            document.getElementById('card-mono').innerText = t.logo;
             document.getElementById('inv-main-text').innerText = t.inv;
             document.getElementById('restoran-name').innerText = t.restoran;
             document.getElementById('rest-title').innerText = t.rest_t;
@@ -289,7 +297,7 @@
             
             setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 100);
             
-            audio.play().catch(err => console.log("Musiqa avtomatik chalishini brauzer blokladi. Tugma orqali yoqing."));
+            audio.play().catch(err => console.log("Musiqa bloklandi"));
             setInterval(updateTimer, 1000);
         }
 
